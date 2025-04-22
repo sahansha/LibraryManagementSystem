@@ -37,6 +37,7 @@ private final UserDetailsService userDetailsService;
         return       httpSecurity.csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth->auth
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 //.httpBasic(Customizer.withDefaults())
